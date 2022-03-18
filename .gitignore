@@ -1,0 +1,4 @@
+.git
+*__pycache__*
+resources/fonts/*
+!resources/fonts/noFontHere.txt
