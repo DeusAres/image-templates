@@ -2,8 +2,8 @@ import textwrap
 from funPIL import df
 from resources.paths import * 
 
-def main(japanese, english):
-    W, H = 2000, 2000
+def main(W, H, japanese, english):
+    
     prop = lambda x : int(min(W, H) * x)
     fontPath = str(FONTS / "zen antique.ttf")
 

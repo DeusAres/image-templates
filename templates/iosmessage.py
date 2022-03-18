@@ -3,8 +3,8 @@ from funPIL import df
 from resources.paths import * 
 
 
-def main(message, bubbleColor='#0e7efa'):
-    W, H = 2000, 3000
+def main(W, H, message, bubbleColor='#0e7efa'):
+    
     canvasB, canvasD = df.backgroundPNG(W, H)
     font = str(FONTS / "Helvetica.ttf")
     
@@ -12,7 +12,7 @@ def main(message, bubbleColor='#0e7efa'):
     size = int(perc*0.075)
     font = df.fontDefiner(font, size)
 
-    pad_up, pad_down, pad_left, pad_right = int(perc*0.0425), int(perc*0.03), int(perc*0.055), int(perc*0.07)
+    pad_up, pad_down, pad_left, pad_right = int(perc*0.0425), int(perc*0.0425), int(perc*0.055), int(perc*0.07)
 
     new_message = []
     for each in message.split('\n'):
@@ -32,12 +32,11 @@ def main(message, bubbleColor='#0e7efa'):
     rectB, rectD = df.backgroundPNG(rectX2 - rectX1, rectY2 - rectY1, bubbleColor)
 
     rectB = df.roundCorners(rectB, int(perc*0.07))
-    #rectB = df.blurEdges(rectB, 1)
 
     canvasB = df.pasteItem(canvasB, rectB, rectX1, rectY1)
 
     bubble = df.openImage(str(IMAGES / "bubble.png"))[0]
-    bubble, _ = df.resizeToFit(bubble, int(bubble.width * perc/4080))[0]
+    bubble, _ = df.resizeToFit(bubble, int(bubble.width * perc/4080))
     bubble = df.fillWithColor(bubble, bubbleColor)
     pad_bubble = int(bubble.width*143/246) + 2#103
     canvasB = df.pasteItem(canvasB, bubble, rectX2 - pad_bubble , rectY2 - bubble.height)

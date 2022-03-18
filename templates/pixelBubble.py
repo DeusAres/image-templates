@@ -3,7 +3,7 @@ from textwrap import wrap
 from funPIL import df
 from resources.paths import * 
 
-def main(message):
+def main(W, H, message):
     if type(message) not in [list, tuple]:
         message = wrap(message, 14, break_long_words=False)
 
@@ -30,18 +30,18 @@ def main(message):
                 draw.rectangle([sx, sy, sx+diag-1, sy+diag-1], fill=(0, 0, 0, alpha))
             squares.append(squares.pop(0))
 
-    W, H = 3000, 3000
+    Wtemp, Htemp = 3000, 3000
     prop = lambda x : int(min(W, H) * x)
     canvasB, canvasD = df.backgroundPNG(W, H)
     center_w, center_h = canvasB.width//2, canvasB.height//2
 
     # TEXT RELATED
-    textB, textD = df.backgroundPNG(W, H)
-    font = df.fontDefiner(str(FONTS / "silk_screen.ttf"), prop(0.016))
+    textB, textD = df.backgroundPNG(Wtemp, Htemp)
+    font = df.fontDefiner(str(FONTS / "silk_screen.ttf"), 50)
     df.drawMultiLine(0, W, 0, message, font, 'black', 'center', draw=textD, space=prop(0.003))
     textB, textD = df.cropToRealSize(textB)
     textB = df.fillOpaque(textB)
-    textB = textB.resize([int(textB.width//prop(0.001)), int(textB.height//prop(0.001))], resample=Image.NEAREST)
+    textB = textB.resize([int(textB.width//3), int(textB.height//3)], resample=Image.NEAREST)
     # END TEXT RELATED
 
     diagonal_sum = 3
@@ -75,7 +75,7 @@ def main(message):
     canvasB = df.pasteItem(canvasB, textB, zero_text_w+prop(0.001), zero_text_h-prop(0.001))
     
     canvasB, _ = df.cropToRealSize(canvasB)
-    canvasZ = df.backgroundPNG(2000, 3000)[0]
-    canvasB, _ = df.resizeToFit(canvasB, 2000, None, Image.NEAREST)
+    canvasZ = df.backgroundPNG(W, H)[0]
+    canvasB, _ = df.resizeToFit(canvasB, min(W, H), None, Image.NEAREST)
     canvasZ = df.pasteItem(canvasZ, canvasB, 0, 0)
     return canvasZ
