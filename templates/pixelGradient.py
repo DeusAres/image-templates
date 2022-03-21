@@ -2,7 +2,7 @@ from funPIL import df
 from resources.paths import *
 from textwrap import wrap
 
-def main(W, H, message):
+def main(W: int=1000, H: int=1000, message: list[str]='Pixel gradient!'):
     from random import randint as ri
     canvasB, canvasD = df.backgroundPNG(W, H)
     prop = lambda x : int(min(W, H) * x)

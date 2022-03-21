@@ -1,7 +1,7 @@
 from funPIL import df
 from resources.paths import *
 
-def main(W, H, champion):
+def main(W: int=1000, H: int=1000, champion: str="Yasuo"):
     message = [champion.upper(), "MAIN"]
 
     prop = lambda x : int(min(W, H) * x)

@@ -3,7 +3,7 @@ from textwrap import wrap
 from funPIL import df
 from resources.paths import * 
 
-def main(W, H, message):
+def main(W: int=1000, H: int=1000, message: str='Pixel Art bubble!'):
     if type(message) not in [list, tuple]:
         message = wrap(message, 14, break_long_words=False)
 

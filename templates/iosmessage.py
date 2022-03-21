@@ -1,10 +1,10 @@
 from textwrap import wrap
+from PIL import Image
 from funPIL import df
 from resources.paths import * 
 
+def main(W: int=1000, H: int=1000, message: list[str]='my iOS message as been delivered!', bubble_color: str='#0e7efa', message_color: str='#ffffff') -> Image:
 
-def main(W, H, message, bubbleColor='#0e7efa'):
-    
     canvasB, canvasD = df.backgroundPNG(W, H)
     font = str(FONTS / "Helvetica.ttf")
     
@@ -29,7 +29,7 @@ def main(W, H, message, bubbleColor='#0e7efa'):
 
     rectX1, rectY1 = message_x - pad_left, message_y - pad_up
     rectX2, rectY2 = message_x + message_w + pad_right, message_y + message_h + pad_down
-    rectB, rectD = df.backgroundPNG(rectX2 - rectX1, rectY2 - rectY1, bubbleColor)
+    rectB, rectD = df.backgroundPNG(rectX2 - rectX1, rectY2 - rectY1, bubble_color)
 
     rectB = df.roundCorners(rectB, int(perc*0.07))
 
@@ -37,11 +37,11 @@ def main(W, H, message, bubbleColor='#0e7efa'):
 
     bubble = df.openImage(str(IMAGES / "bubble.png"))[0]
     bubble, _ = df.resizeToFit(bubble, int(bubble.width * perc/4080))
-    bubble = df.fillWithColor(bubble, bubbleColor)
+    bubble = df.fillWithColor(bubble, bubble_color)
     pad_bubble = int(bubble.width*143/246) + 2#103
     canvasB = df.pasteItem(canvasB, bubble, rectX2 - pad_bubble , rectY2 - bubble.height)
 
     df.drawMultiLine(message_x, message_x+message_w, message_y, new_message,
-        font, 'white', justify='left', draw=canvasD, space = 0)
+        font, message_color, justify='left', draw=canvasD, space = 0)
 
     return canvasB  
