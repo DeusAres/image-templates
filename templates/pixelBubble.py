@@ -37,8 +37,9 @@ def main(W: int=1000, H: int=1000, message: str='Pixel Art bubble!'):
 
     # TEXT RELATED
     textB, textD = df.backgroundPNG(Wtemp, Htemp)
-    font = df.fontDefiner(str(FONTS / "silk_screen.ttf"), 50)
-    df.drawMultiLine(0, W, 0, message, font, 'black', 'center', draw=textD, space=prop(0.003))
+    font = df.fontDefiner(str(FONTS / "silkScreen.ttf"), 50)
+    #df.drawMultiLine(0, W, 0, message, font, 'black', 'center', draw=textD, space=prop(0.003))
+    df.drawMultiline(W//2, 0, textD, message, font, 'black', 'ma', align='center')
     textB, textD = df.cropToRealSize(textB)
     textB = df.fillOpaque(textB)
     textB = textB.resize([int(textB.width//3), int(textB.height//3)], resample=Image.NEAREST)

@@ -5,3 +5,7 @@ resources/fonts/*
 testPixel.py
 PNG*
 JPG*
+batchLongFandom.py
+fandom.txt
+settings.py
+.vscode/launch.json

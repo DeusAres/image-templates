@@ -1,1 +1,2 @@
-You should download the fonts and rename them accordingly to files
+You should download the fonts and rename them accordingly to the templates you want to use  
+Use the naming convention with no spaces and caps for every new word

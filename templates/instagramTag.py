@@ -9,7 +9,7 @@ def main(W: int=1000, H: int=1000, message: str='instagram.tag_image'):
     message = message.lower()
 
     pad = prop(0.23)
-    font_path = (str(FONTS / "Proxima.otf"))
+    font_path = (str(FONTS / "proxima.otf"))
 
     size = df.fitSize(font_path, message, W - pad)
     font = df.fontDefiner(font_path, size)

@@ -1,18 +1,18 @@
 from funPIL import df
 
 
-def main(png, backgroundColor = "white"):
 
-    png = df.cropToRealSize(png.convert("RGBA"))
-    CW, CH = 1000, 1500
-    pad = 200
+def main(png, backgroundColor, destination):
 
-    C = df.backgroundJPG(CW, CH, backgroundColor)[0]
+    png = df.cropToRealSize(png.convert("RGBA"))[0]
 
-    df.resizeToFitSpace()
-    png = df.resizeToFit(png, CW-pad)
+    if destination == 'instagram':
+        CW, CH = 1080, 1350
+    elif destination == 'pinterest':
+        CW, CH = 1000, 1500
 
+    C = df.backgroundPNG(CW, CH, backgroundColor)[0]
+    png = df.resizeToFit(png, min(CW, CH) - 50)[0]
     C = df.pasteItem(C, png, *df.centerItem(C, png))
 
-    return C
-
+    return C.convert('RGB')

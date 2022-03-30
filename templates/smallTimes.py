@@ -2,7 +2,7 @@ from funPIL import df
 from resources.paths import * 
 
 def main(W: int=1000, H: int=1000, message: str='Small minimal times', message_color: str='#ffffff'):
-    fontPath = FONTS / "Times New Roman.ttf"
+    fontPath = FONTS / "timesNewRoman.ttf"
 
     textB, textD = df.backgroundPNG(W, H)
 

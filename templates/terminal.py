@@ -10,7 +10,7 @@ def main(W: int=1000, H: int=1000, message: list[str]='rm -rf /', root: bool=Fal
         message = "~$ " + message
     message = message.split('\n')
     
-    fontPath = FONTS / 'Consolas.ttf'
+    fontPath = FONTS / 'consolas.ttf'
     font = df.fitFontInCanvas(fontPath, message, (W, H))
 
     canvasB, canvasD = df.backgroundPNG(W, H)

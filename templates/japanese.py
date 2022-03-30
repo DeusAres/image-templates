@@ -5,7 +5,7 @@ from resources.paths import *
 def main(W: int=1000, H: int=1000, japanese: str="起死回生", english: str='Wake from death and return to life'):
     
     prop = lambda x : int(min(W, H) * x)
-    fontPath = str(FONTS / "zen antique.ttf")
+    fontPath = str(FONTS / "zenAntique.ttf")
 
     textB, textD = df.backgroundPNG(W, H)
 
@@ -13,13 +13,13 @@ def main(W: int=1000, H: int=1000, japanese: str="起死回生", english: str='W
     font = df.fontDefiner(fontPath, size)
     df.drawText(W//2, 0, textD, japanese, 'white', font, 'mt')
     _, h = df.getSize(japanese, font)
-    h += prop(0.03)
+    h -= prop(0.04)
 
     english = f'({english})'
     english = textwrap.wrap(english, width=20)
     size = prop(0.075)
     font = df.fontDefiner(fontPath, size)
-    df.drawMultiLine(prop(0.05), prop(0.95), h, english, font, "white", draw=textD, space=-prop(0.02))
+    df.drawMultiline(prop(0.5), h, textD, english, font, 'white', 'ma', prop(0.02), 'center')
 
     textB, textD = df.cropToRealSize(textB)
 

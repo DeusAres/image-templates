@@ -8,7 +8,7 @@ def main(W: int=1000, H: int=1000, champion: str="Yasuo"):
 
     textB, textD = df.backgroundPNG(W, H)
     canvasB, canvasD = df.backgroundPNG(W, H)
-    fontPath = FONTS / 'Arial Bold Italic.ttf'
+    fontPath = FONTS / 'arialBoldItalic.ttf'
     size = prop(0.125)
     #df.fitSize(fontPath, message[0], W-100)
     font = df.fontDefiner(fontPath, size)
