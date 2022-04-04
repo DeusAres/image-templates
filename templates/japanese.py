@@ -1,19 +1,20 @@
 import textwrap
-from funPIL import df
+import funPIL as df
 from resources.paths import * 
 
-def main(W: int=1000, H: int=1000, japanese: str="起死回生", english: str='Wake from death and return to life'):
+def main(W: int=1000, H: int=1000, japanese: list[str]="起死回生", english: str='Wake from death and return to life'):
     
     prop = lambda x : int(min(W, H) * x)
     fontPath = str(FONTS / "zenAntique.ttf")
 
     textB, textD = df.backgroundPNG(W, H)
-
-    size = df.fitSize(fontPath, japanese, W)
+    japanese = japanese.split('\n')
+    size = df.fitSize(fontPath, japanese, min(W, H))
     font = df.fontDefiner(fontPath, size)
-    df.drawText(W//2, 0, textD, japanese, 'white', font, 'mt')
-    _, h = df.getSize(japanese, font)
-    h -= prop(0.04)
+    df.drawMultiline(W//2, 0, textD, japanese, font, 'white', 'ma', align='center')
+    #df.drawText(W//2, 0, textD, japanese, 'white', font, 'mt')
+    _, h = df.getSizeMultiline(japanese, font)
+    h += prop(0.04)
 
     english = f'({english})'
     english = textwrap.wrap(english, width=20)

@@ -1,4 +1,4 @@
-from funPIL import df
+import funPIL as df
 from resources.paths import *
 
 def main(W:int=2000, H:int=3000, 

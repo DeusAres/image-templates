@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 
 import PySimpleGUI as sg
-from funPIL import df
+import funPIL as df
 
 import imgSave
 import jpgGen

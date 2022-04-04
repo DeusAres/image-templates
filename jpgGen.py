@@ -1,4 +1,4 @@
-from funPIL import df
+import funPIL as df
 
 
 

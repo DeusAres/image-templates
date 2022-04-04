@@ -1,6 +1,6 @@
 from textwrap import wrap
 from PIL import Image
-from funPIL import df
+import funPIL as df
 from resources.paths import * 
 
 def main(W: int=1000, H: int=1000, message: list[str]='my iOS message as been delivered!', bubble_color: str='#0e7efa', message_color: str='#ffffff') -> Image:

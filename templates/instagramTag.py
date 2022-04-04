@@ -1,4 +1,4 @@
-from funPIL import df
+import funPIL as df
 from resources.paths import *
 
 def main(W: int=1000, H: int=1000, message: str='instagram.tag_image'):
