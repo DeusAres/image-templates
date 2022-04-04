@@ -96,11 +96,13 @@ def main():
                     if dt2[j] is None:
                         dt2[j] = quotes[i][k]
                         k+=1
-
-                newQuotes.append(dt2)
                 
-            print(newQuotes)
-
+                dt3 = {}
+                for a, b in zip(templateArgs.keys(), dt2):
+                    dt3[a] = b
+                dt3 = readTemplates.correctDatas(templateArgs, dt3)
+                newQuotes.append(dt3)
+                
             for each in newQuotes:
                 image = template.main(*each)
                 if values['PNG']:

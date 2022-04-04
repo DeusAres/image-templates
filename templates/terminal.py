@@ -15,7 +15,8 @@ def main(W: int=1000, H: int=1000, message: list[str]='rm -rf /', root: bool=Fal
 
     canvasB, canvasD = df.backgroundPNG(W, H)
 
-    df.drawMultiLine(0, W, 0, message, font, 'white', 'left', draw=canvasD)
+    df.drawMultiline(0, 0, canvasD, message, font, 'white')
+    #df.drawMultiLine(0, W, 0, message, font, 'white', 'left', draw=canvasD)
 
     return canvasB
 
