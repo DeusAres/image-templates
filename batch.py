@@ -17,8 +17,8 @@ def main():
         [
             sg.Frame('File', [
                 [sg.Text('File'), sg.Input(key='file'), sg.FileBrowse('Browse')],
-                [sg.Text('Variable splitter', s=(20,1)), sg.Input(s=(3,1), key='splitter')],
-                [sg.Text('Between text', s=(20,1)), sg.Input(s=(3,1), key='terminator')]
+                [sg.Text('Terminator for each design', s=(20,1)), sg.Input(s=(3,1), key='terminator')],
+                [sg.Text('Variable splitter for each design', s=(20,1)), sg.Input(s=(3,1), key='splitter')]
             ])
         ],
         [   
@@ -71,8 +71,14 @@ def main():
             with open(values['file'], 'r', encoding='utf-8') as f:
                 quotes = "".join(f.readlines())
 
-            quotes = quotes.split('[s]')
-            quotes = [quotes[i].strip('\n').split('[v]') for i in range(len(quotes))]
+            if values['terminator'] == '' : values['terminator'] = None
+            elif values ['terminator'] == '\\n' : values['terminator'] = '\n'
+            quotes = quotes.split(values['terminator'])
+            if values['splitter'] == '' : quotes = [[each] for each in quotes]
+            else:
+                quotes = [quotes[i].strip('\n').split(values['splitter']) for i in range(len(quotes))]
+
+            quotes = list(filter(lambda x : x != [''], quotes))
 
             whichValues = [values[f'which{i}'] for i in range(1, lenTemplateArgs+1)]
             fixedValues = [values[f'fixed{i}'] for i in range(1, lenTemplateArgs+1)]

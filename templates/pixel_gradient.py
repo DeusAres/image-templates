@@ -25,10 +25,10 @@ def main(W: int=1000, H: int=1000, message: list[str]='Pixel gradient!'):
     gradientB, gradientD = df.backgroundJPG(W, H, "white")
 
     color = ri(0,360), 100, 65
-    x = 30
+    x = 15
     for y in range(df.centerItem(canvasB, textB)[0], H, x):
         gradientD.line((0, y, W, y), fill = df.hslToRgb(*color), width = x)
-        color = df.addColor(color, (20, 0, 0))
+        color = df.addColor(color, (5, 0, 0))
     
     canvasB = df.cutWithMask(gradientB, canvasB, canvasB.copy().convert('L'))
     canvasB = df.strokeImage(canvasB, prop(0.004), '#000000', 2)

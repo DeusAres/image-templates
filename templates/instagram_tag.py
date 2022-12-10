@@ -44,7 +44,7 @@ def main(W: int=1000, H: int=1000, message: str='instagram.tag_image'):
 
     df.drawText(W//2, H//2, canvasD, message, "white", font, 'mm')
     triangle = df.setOpacity(triangle, 90)
-    triangle = df.blurImage(triangle, 1)
+    triangle = df.blurImage(triangle, 1)[0]
 
     xCent, yCent = int(W/2 - triangle.width/2), int(H//2 - rectH//2 - triangle.height)
     canvasB = df.pasteItem(canvasB, triangle, xCent, yCent)

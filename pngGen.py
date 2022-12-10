@@ -1,5 +1,5 @@
 from textwrap import wrap
-import drawerFunctions as df
+import funPIL as df
 from rootFolder import rf
 
 ROOT = rf(__file__, "typography")
