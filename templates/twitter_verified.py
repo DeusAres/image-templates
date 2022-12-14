@@ -1,9 +1,7 @@
 import funPIL as df
 from resources.paths import *
 # Will not be reloaded each time in batch ihihihihihih smart
-import timeMyScript2
 verified = df.openImage(str(IMAGES / 'twitterVerified.png'))[0]
-timer = timeMyScript2.Timer();
 def main(W: int=4800, H: int=4800, message: list[str]="programmer") -> df.Image:
     
     canvasB, canvasD = df.backgroundPNG(W, H)
